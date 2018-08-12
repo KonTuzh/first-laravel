@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home', [
+			'title' => 'First Laravel Project',
+			'description' => 'Description',
+			'author' => 'author',
+			'h1' => 'Main Heading',
+			'subtitle' => 'This is the main page of my first site on Laravel',
+			'btnText' => 'Update'
+		]);
 });
