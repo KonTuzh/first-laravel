@@ -11,13 +11,31 @@
 |
 */
 
+Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function () {
+	//
+	Route::get('/', 'DashboardController@dashboard')->name('admin.index');
+});
+
+
+
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/test-home', function () {
     return view('pages.home', [
-			'title' => 'First Laravel Project',
+			'title'       => 'First Laravel Project',
 			'description' => 'Description',
-			'author' => 'author',
-			'h1' => 'Main Heading',
-			'subtitle' => 'This is the main page of my first site on Laravel',
-			'btnText' => 'Update'
+			'author'      => 'author',
+			'h1'          => 'Main Heading',
+			'subtitle'    => 'This is the main page of my first site on Laravel',
+			'btnText'     => 'Update'
 		]);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+

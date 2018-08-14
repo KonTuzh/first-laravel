@@ -16818,14 +16818,14 @@ body.homepage {
   color: #fff;
 }
 
-a.btn {
+body.homepage a.btn {
   color: #fff;
   border-color: #fff;
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
 }
 
-a.btn:hover {
+body.homepage a.btn:hover {
   color: #3bcdbe;
   background-color: #fff;
 }

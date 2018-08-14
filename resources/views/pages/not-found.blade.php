@@ -9,10 +9,10 @@
 </head>
 <body class="page-not-found">
 		<div class="container">
-			<a class="header-logo" href="<?=ROOT?>"><img class="img-response" src="<?=ROOT?>images/branding/logo.png" alt="{{ $sitename }}"></a>
+			<a class="header-logo" href="/"><img class="img-response" src="/images/branding/logo.png" alt="{{ $sitename }}"></a>
 			<div class="err"></div>
 			<p class="msg"><span>404</span>Такой страницы не существует...<br>Возможно она была удалена или перемещена.</p>
-			<p class="msg"><a class="btn" href="<?=ROOT?>">Вернуться на главную</a></p>
+			<p class="msg"><a class="btn" href="/">Вернуться на главную</a></p>
 		</div>
 </body>
 </html>
