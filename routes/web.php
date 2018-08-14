@@ -11,9 +11,19 @@
 |
 */
 
+// php artisan make:controller Admin/Category/CreateCategoryController --model=Category
+
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function () {
-	//
 	Route::get('/', 'DashboardController@dashboard')->name('admin.index');
+
+	Route::group(['prefix'=>'category', 'namespace'=>'Category'], function () {
+		Route::get('/', 'ListCategoryController')->name('admin.category.index');
+		Route::post('/', 'CreateCategoryController@store')->name('admin.category.store');
+		Route::get('/create', 'CreateCategoryController')->name('admin.category.create');
+		Route::get('/{category}', 'EditCategoryController')->name('admin.category.edit');
+		Route::put('/{category}', 'EditCategoryController@update')->name('admin.category.update');
+	});
+	
 });
 
 
