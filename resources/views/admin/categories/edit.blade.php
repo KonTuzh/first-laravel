@@ -14,7 +14,7 @@
 
 	{{-- Form Create Category --}}
 	<div class="row">
-		<form action="{{route('admin.category.update')}}" class="form-horizontal" method="POST">
+		<form action="{{route('admin.category.update', $category)}}" class="form-horizontal" method="POST">
 			<input type="hidden" name="_method" value="put">
 			{{ csrf_field() }}
 

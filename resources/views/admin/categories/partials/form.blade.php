@@ -1,21 +1,24 @@
 <label for="published">Статус</label>
 <select name="published" class="form-control">
-	<option value="0">Черновик</option>
-	<option value="1">Опубликовано</option>
+	@if (isset($category->id))
+		<option value="0" @if ($category->published == 0) selected=""	@endif>Черновик</option>
+		<option value="1" @if ($category->published == 1) selected=""	@endif>Опубликовано</option>
+	@else
+		<option value="0">Черновик</option>
+		<option value="1">Опубликовано</option>
+	@endif
 </select>
 
 <label for="title">Название</label>
-<input type="text" class="form-control" name="title" placeholder="Заголовок категории" value="">
+<input type="text" class="form-control" name="title" placeholder="Заголовок категории" value="{{$category->title or ""}}" required>
 
-<label for="slug">URL</label>
-<input type="text" class="form-control" name="slug" placeholder="Ссылка на категорию" value="">
+<label for="slug">URL (Уникальное значение)</label>
+<input type="text" class="form-control" name="slug" placeholder="Ссылка на категорию" value="{{$category->slug or ""}}">
 
 <label for="parent_id">Родительская категория</label>
-<select name="parent_id" class="form-control">
+<select class="form-control" name="parent_id">
 	<option value="0">-- без родительской категории --</option>
-	<option value="1">Категория 1</option>
-	<option value="2">Категория 2</option>
-	<option value="3">Категория 3</option>
+	@include('admin.categories.partials.categories', ['categories' => $categories])
 </select>
 
 <hr>

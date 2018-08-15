@@ -4,7 +4,7 @@
 
 <div class="container">
 	<div class="row">
-		<h1>Admin Dashboard</h1>
+		<h1>Dashboard</h1>
 		<hr>
 	</div>
 
@@ -40,7 +40,7 @@
 			</a>
 		</div>
 		<div class="col-sm-6">
-			<a href="#" class="btn btn-block btn-default">Добавить статью</a>
+			<a href="{{route('admin.article.create')}}" class="btn btn-block btn-default">Добавить статью</a>
 			<a href="#" class="list-group-item">
 				<h4 class="list-group-item-heading">Статья первая</h4>
 				<p class="list-group-item-text">Категория</p>

@@ -12,7 +12,7 @@
 		<hr>
 	</div>
 
-	{{-- Form Create Category --}}
+	{{-- Form Create Article --}}
 	<div class="row">
 		<form action="{{route('admin.article.store')}}" class="form-horizontal" method="POST">
 			{{ csrf_field() }}

@@ -16,9 +16,7 @@ class DeleteCategoryController extends Controller
 	 */
 	public function __invoke(Category $category)
 	{
-		echo 'Удаление не реализовано...';
-
-		sleep(5);
+		$category->delete();
 
 		return redirect()->route('admin.category.index');
 	}

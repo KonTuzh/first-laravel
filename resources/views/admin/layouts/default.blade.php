@@ -10,8 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+		<!-- Styles -->
+		<link href="{{ asset('css/admin/dropify.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -82,6 +83,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="/js/admin/jquery.min.js"></script>
+		<script src="/js/admin/tinymce/tinymce.min.js"></script>
+		<script src="/js/admin/dropify.min.js"></script>
+		<script src="{{ asset('js/admin/main.js') }}"></script>
 </body>
 </html>

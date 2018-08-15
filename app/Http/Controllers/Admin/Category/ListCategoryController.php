@@ -15,6 +15,8 @@ class ListCategoryController extends Controller
 	 */
 	public function __invoke()
 	{
-		return view('admin.categories.index');
+		return view('admin.categories.index', [
+			'categories' => Category::paginate(10)
+		]);
 	}
 }

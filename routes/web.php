@@ -16,13 +16,13 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix'=>'blog', 'namespace'=>'Blog'], function () {
-	Route::get('/', 'BlogController@index')->name('blog.index');
-	Route::get('/{slug_category}/{slug_article?}', 'BlogController')->name('blog.show');
+	Route::get('/', 'ListBlogController')->name('blog.index');
+	Route::get('/{slug_category}/{slug_article?}', 'ShowBlogController')->name('blog.show');
 });
 
 Auth::routes();
 
-Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function () {
+Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware' => ['auth']], function () {
 	Route::get('/', 'DashboardController@dashboard')->name('admin.index');
 
 	Route::group(['prefix'=>'category', 'namespace'=>'Category'], function () {

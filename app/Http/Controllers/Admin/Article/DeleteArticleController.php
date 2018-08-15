@@ -16,9 +16,8 @@ class DeleteArticleController extends Controller
 	 */
 	public function __invoke(Article $article)
 	{
-		echo 'Удаление не реализовано... переадресация через 5 секунд';
-
-		sleep(5);
+		$article->categories()->detach();
+		$article->delete();
 
 		return redirect()->route('admin.article.index');
 	}

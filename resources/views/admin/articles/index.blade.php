@@ -25,35 +25,44 @@
 		<table class="table table-striped">
 			<thead>
 				<th>Наименование статьи</th>
+				<th>URL</th>
 				<th>Публикация</th>
 				<th>Действие</th>
 			</thead>
 			<tbody>
-				<tr>
-					<td>Статья 1</td>
-					<td>1</td>
-					<td>
-						<a class="btn btn-default" href="#"><i class="mdi mdi-table-edit"></i></a>
-						<a class="btn btn-default" href="#"><i class="mdi mdi-delete"></i></a>
-					</td>
-				</tr>
-				<tr>
-					<td>Статья 2</td>
-					<td>1</td>
-					<td>
-						<a class="btn btn-default" href="#"><i class="mdi mdi-table-edit"></i></a>
-						<a class="btn btn-default" href="#"><i class="mdi mdi-delete"></i></a>
-					</td>
-				</tr>
-				<tr>
-					<td>Статья 3</td>
-					<td>1</td>
-					<td>
-						<a class="btn btn-default" href="#"><i class="mdi mdi-table-edit"></i></a>
-						<a class="btn btn-default" href="#"><i class="mdi mdi-delete"></i></a>
-					</td>
-				</tr>
+				@forelse ($articles as $article)
+					<tr>
+						<td>{{ $article->title }}</td>
+						<td>{{ $article->slug }}</td>
+						<td>{{ $article->published }}</td>
+						<td>
+							<form onsubmit="if(confirm('Удалить?')){ return true }else{ return false }" action="{{route('admin.article.destroy', $article)}}" method="post">
+								<input type="hidden" name="_method" value="DELETE">
+								{{ csrf_field() }}
+	
+								<a class="btn btn-default" href="{{route('admin.article.edit', $article)}}"><i class="mdi mdi-table-edit"></i></a>
+	
+								<button class="btn"><i class="mdi mdi-delete"></i></button>
+							</form>
+						</td>
+					</tr>
+				@empty
+						<tr>
+							<td class="text-center" colspan="3">
+								<h2>Статей нет</h2>
+							</td>
+						</tr>
+				@endforelse
 			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3">
+						<ul class="pagination pull-right">
+							{{ $articles->links() }}
+						</ul>
+					</td>
+				</tr>
+			</tfoot>
 		</table>
 	</div>
 </div>

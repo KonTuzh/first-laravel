@@ -15,7 +15,11 @@ class CreateCategoryController extends Controller
 	 */
 	public function __invoke()
 	{
-		return view('admin.categories.create');
+		return view('admin.categories.create', [
+			'category'   => [],
+			'categories' => Category::with('children')->where('parent_id', '0')->get(),
+			'delimiter'  => ''
+		]);
 	}
 
 	/**
@@ -26,6 +30,8 @@ class CreateCategoryController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		return 'Сохранение не реализовано...';
+		Category::create($request->all());
+
+		return redirect()->route('admin.category.index');
 	}
 }
