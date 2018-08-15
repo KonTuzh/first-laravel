@@ -1,0 +1,1 @@
+<h1>Blog/Category: {{ $category }}</h1>
