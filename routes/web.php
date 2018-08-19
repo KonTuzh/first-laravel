@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-	return view('welcome');
-});
+	return view('pages.home');
+})->name('home.index');
 
 Route::group(['prefix'=>'blog', 'namespace'=>'Blog'], function () {
 	Route::get('/', 'ListBlogController')->name('blog.index');

@@ -1,0 +1,52 @@
+@import "vars"
+
+
+/*==========  Desktop First  ==========*/
+
+// ≥1200px
++media-breakpoint-down(lg)
+
+
+// ≥992px
++media-breakpoint-down(md)
+
+
+// ≥768px
++media-breakpoint-down(sm)
+
+
+// ≥576px
++media-breakpoint-down(xs)
+
+	
+
+
+// ≥1030px
+@media only screen and (max-width : 480px)
+	/**/
+
+
+/*==========  Mobile First  ==========*/
+
+// ≤576px
++media-breakpoint-up(sm)
+
+// ≤768px
++media-breakpoint-up(md)
+	section.popular-in-week
+		.slider
+			&-item
+				flex: 0 0 25%
+				max-width: calc(25% - 30px)
+				margin-right: 30px
+
+// ≤992px
++media-breakpoint-up(lg)
+
+
+// ≤1030px
+@media only screen and (min-width : 1030px)
+	/**/
+
+// ≤1200px
++media-breakpoint-up(xl)

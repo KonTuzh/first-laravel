@@ -16,7 +16,8 @@ class ListArticleController extends Controller
 	public function __invoke()
 	{
 		return view('admin.articles.index', [
-			'articles' => Article::orderBy('created_at', 'desc')->paginate(10)
+			'numeration' => 1,
+			'articles' => Article::orderByCreated()->paginate(10)
 		]);
 	}
 }

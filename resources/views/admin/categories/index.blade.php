@@ -14,7 +14,7 @@
 
 	{{-- Create Category Btn --}}
 	<div class="row">
-		<a href="{{route('admin.category.create')}}" class="btn btn-primary pull-right"><i class="mdi mdi-library-plus"></i> Создать категорию</a>
+		<a href="{{route('admin.category.create')}}" class="btn btn-primary pull-right"><i class="mdi mdi-library-plus"></i> Новая категория</a>
 	</div>
 
 	<hr>
@@ -22,7 +22,8 @@
 	<div class="row">
 		<table class="table table-striped">
 			<thead>
-				<th>Наименование категории</th>
+				<th>#</th>
+				<th>Заголовок</th>
 				<th>URL</th>
 				<th>Публикация</th>
 				<th>Действие</th>
@@ -30,9 +31,13 @@
 			<tbody>
 				@forelse ($categories as $category)
 					<tr>
+						<td>{{ $numeration++ }}</td>
 						<td>{{ $category->title }}</td>
 						<td>{{ $category->slug }}</td>
-						<td>{{ $category->published }}</td>
+						<td>
+							@if ($category->published == 0) Черновик	@endif
+							@if ($category->published == 1) Опубликовано	@endif
+						</td>
 						<td>
 							<form onsubmit="if(confirm('Удалить?')){ return true }else{ return false }" action="{{route('admin.category.destroy', $category)}}" method="post">
 								<input type="hidden" name="_method" value="DELETE">

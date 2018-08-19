@@ -12,11 +12,9 @@
 		<hr>
 	</div>
 
-	{{-- <hr> --}}
-
 	{{-- Create Article Btn --}}
 	<div class="row">
-		<a href="{{route('admin.article.create')}}" class="btn btn-primary pull-right"><i class="mdi mdi-library-plus"></i> Добавить статью</a>
+		<a href="{{route('admin.article.create')}}" class="btn btn-primary pull-right"><i class="mdi mdi-library-plus"></i> Новая статья</a>
 	</div>
 
 	<hr>
@@ -24,17 +22,29 @@
 	<div class="row">
 		<table class="table table-striped">
 			<thead>
-				<th>Наименование статьи</th>
+				<th>#</th>
+				<th>Заголовок</th>
 				<th>URL</th>
+				<th>Категории</th>
 				<th>Публикация</th>
+				<th>Дата</th>
 				<th>Действие</th>
 			</thead>
 			<tbody>
 				@forelse ($articles as $article)
+					
 					<tr>
+						<td>{{ $numeration++ }}</td>
 						<td>{{ $article->title }}</td>
 						<td>{{ $article->slug }}</td>
-						<td>{{ $article->published }}</td>
+						<td>{{ $article->categories()->pluck('title')->implode(', ') }}</td>
+						<td>
+							@if ($article->published == 0) Черновик	@endif
+							@if ($article->published == 1) Опубликовано	@endif
+						</td>
+						<td>
+							{{ $article->created_at }}
+						</td>
 						<td>
 							<form onsubmit="if(confirm('Удалить?')){ return true }else{ return false }" action="{{route('admin.article.destroy', $article)}}" method="post">
 								<input type="hidden" name="_method" value="DELETE">

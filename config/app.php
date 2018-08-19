@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    // 'name' => env('APP_NAME', 'Laravel'),
+    'name' => 'Интернет-магазин велосипедов CycleShop',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +178,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+				/*
+				 * Own Service Providers...
+				 */
+				App\Providers\BlogServiceProvider::class,
     ],
 
     /*

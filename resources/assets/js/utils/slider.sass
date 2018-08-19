@@ -1,0 +1,43 @@
+.sliderButton button
+	display: block
+	position: absolute
+	top: 50%
+	font-size: 3.6rem
+  height: 30px
+  line-height: 30px
+	padding: 15px
+	transform: translate(0, -50%)
+	background: transparent
+	border: none
+	opacity: 0.6
+	transition: all 0.3s ease
+	outline: none
+	z-index: 1
+	&:hover
+		opacity: 1
+	&.prev
+		left: 20px
+	&.next
+		right: 20px
+
+.slider
+	background-color: #fff
+	height: 100%
+	&-item
+		>div
+			display: flex
+			flex-direction: column
+		.slide
+			margin-bottom: auto
+		&-content
+			padding: 0 20px 40px 20px
+			p
+				color: #333333
+			.label
+				font-size: 2.1rem
+				margin: 0
+			.heading
+				font-size: 3.6rem
+				font-weight: 500
+				line-height: 1
+		

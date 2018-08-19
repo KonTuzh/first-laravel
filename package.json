@@ -12,10 +12,17 @@
     "devDependencies": {
         "axios": "^0.17",
         "bootstrap-sass": "^3.3.7",
+        "browser-sync": "^2.24.6",
+        "browser-sync-webpack-plugin": "^2.2.2",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "npm": "^6.4.0",
+        "npm-watch": "^0.3.0",
+        "vue-concise-slider": "^2.4.9"
     }
 }

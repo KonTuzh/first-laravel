@@ -11,7 +11,9 @@ class ListBlogController extends Controller
 {
 	public function __invoke()
 	{
-		return view('blog.index');
+		return view('blog.index', [
+			'articles' => Article::orderByCreated()->paginate(10)
+		]);
 	}
 
 }
