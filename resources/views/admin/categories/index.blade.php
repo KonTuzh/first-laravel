@@ -6,7 +6,8 @@
 	<div class="row">
 		@component('admin.components.breadcrumb')
 			@slot('title') Список категорий @endslot
-			@slot('parent') Dashboard @endslot
+			@slot('parent') {{0}} @endslot
+			@slot('parent_title') {{0}} @endslot
 			@slot('active') Категории @endslot
 		@endcomponent
 		<hr>

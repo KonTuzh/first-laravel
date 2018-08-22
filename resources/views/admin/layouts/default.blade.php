@@ -9,7 +9,7 @@
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<!-- Styles -->
-	<link href="{{ asset('css/admin/dropify.min.css') }}" rel="stylesheet">
+	@yield('styles')
 	<link href="{{ asset('css/admin/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -27,8 +27,11 @@
 					</button>
 
 					<!-- Branding Image -->
-					<a class="navbar-brand" href="{{ url('/') }}">
-						{{ config('app.name', 'Laravel') }}
+					<a class="logo" href="{{ url('/') }}" title="{{ config('app.name') }}">
+						<picture>
+							<source srcset="/images/branding/logo.svg" type="image/svg+xml">
+							<img class="img-responsive" src="/images/branding/logo.png" alt="{{ config('app.name') }}">
+						</picture>
 					</a>
 				</div>
 
@@ -81,9 +84,8 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="{{ asset('js/app.js') }}"></script>
-	<script src="/js/admin/tinymce/tinymce.min.js"></script>
-	<script src="/js/admin/dropify.min.js"></script>
+	<script src="{{ asset('js/admin/app.js') }}"></script>
+	@yield('scripts')
 	<script src="{{ asset('js/admin/main.js') }}"></script>
 </body>
 </html>

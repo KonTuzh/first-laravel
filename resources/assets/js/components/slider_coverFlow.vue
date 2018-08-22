@@ -1,5 +1,5 @@
 <style lang="sass">
-@import "../utils/common.scss"
+@import "../utils/slider.sass"
 </style>
 <template>
   <div>

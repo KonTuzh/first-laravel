@@ -6,8 +6,9 @@
 	<div class="row">
 		@component('admin.components.breadcrumb')
 			@slot('title') Список статей @endslot
-			@slot('parent') Dashboard @endslot
-			@slot('active') Статьи @endslot
+			@slot('parent') {{0}} @endslot
+			@slot('parent_title') {{0}} @endslot
+			@slot('active') Список статей @endslot
 		@endcomponent
 		<hr>
 	</div>

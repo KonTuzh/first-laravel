@@ -11,12 +11,16 @@ let mix = require('laravel-mix');
  |
  */
 
+/*-- Frontend --*/
 mix.js('resources/assets/js/app.js', 'public/js')
 	 .sass('resources/assets/sass/main.sass', 'public/css/app.css');
 
-mix.sass('resources/assets/admin/sass/app.sass', 'public/css/admin');
 
-mix.copy('resources/assets/admin/js', 'public/js/admin');
+/*-- Admin --*/
+mix.js('resources/assets/admin/js/app.js', 'public/js/admin')
+	 .js('resources/assets/admin/js/main.js', 'public/js/admin')
+	 .sass('resources/assets/admin/sass/app.sass', 'public/css/admin')
+	 .copy('resources/assets/admin/js/lib', 'public/js/admin');
 
 mix.copy('resources/assets/images', 'public/images');
 

@@ -6,15 +6,16 @@
 	<div class="row">
 		@component('admin.components.breadcrumb')
 			@slot('title') Создание категории @endslot
-			@slot('parent') Dashboard @endslot
-			@slot('active') Категории @endslot
+			@slot('parent') /admin/category @endslot
+			@slot('parent_title') Категории @endslot
+			@slot('active') Создание категории @endslot
 		@endcomponent
 		<hr>
 	</div>
 
 	{{-- Form Create Category --}}
 	<div class="row">
-		<form action="{{route('admin.category.store')}}" class="form-horizontal" method="POST">
+		<form action="{{route('admin.category.store')}}" method="POST">
 			{{ csrf_field() }}
 
 			{{-- Form include --}}

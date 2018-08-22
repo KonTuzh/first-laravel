@@ -1,20 +1,26 @@
 @extends('admin.layouts.default')
 
+@section('styles')
+	<link href="{{ asset('js/admin/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/admin/dropify.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 
 <div class="container">
 	<div class="row">
 		@component('admin.components.breadcrumb')
 			@slot('title') Редактирование статьи @endslot
-			@slot('parent') Dashboard @endslot
-			@slot('active') Статьи @endslot
+			@slot('parent') /admin/article @endslot
+			@slot('parent_title') Статьи @endslot
+			@slot('active') Редактирование статьи @endslot
 		@endcomponent
 		<hr>
 	</div>
 
 	{{-- Form Create Category --}}
 	<div class="row">
-		<form action="{{route('admin.article.update', $article)}}" class="form-horizontal" method="POST">
+		<form action="{{route('admin.article.update', $article)}}" method="POST">
 			<input type="hidden" name="_method" value="put">
 			{{ csrf_field() }}
 
@@ -26,4 +32,10 @@
 	</div>
 </div>
 		
+@endsection
+
+@section('scripts')
+	<script src="{{ asset('js/admin/tinymce/tinymce.min.js') }}"></script>
+	<script src="{{ asset('js/admin/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}"></script>
+	<script src="{{ asset('js/admin/dropify.min.js') }}"></script>
 @endsection

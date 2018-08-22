@@ -2854,7 +2854,7 @@ html {
 @font-face {
   font-family: "Material Design Icons";
   src: url(/fonts/materialdesignicons-webfont.eot?3bd364e5b4f5c3e57a7376091996d4b4);
-  src: url(/fonts/materialdesignicons-webfont.eot?3bd364e5b4f5c3e57a7376091996d4b4) format("embedded-opentype"), url(/fonts/materialdesignicons-webfont.woff2?9b9f2c447d27a622fcb78f6b7f38a095) format("woff2"), url(/fonts/materialdesignicons-webfont.woff?eec7f0f7c8944b878af8fb7fcc091ade) format("woff"), url(/fonts/materialdesignicons-webfont.ttf?3ef6639a4cce5b903e4031b1b0102675) format("truetype"), url(/fonts/materialdesignicons-webfont.svg?f89ba2d89e5710c9ff4d03829963cf2d) format("svg");
+  src: url(/fonts/materialdesignicons-webfont.eot?3bd364e5b4f5c3e57a7376091996d4b4) format("embedded-opentype"), url(/fonts/materialdesignicons-webfont.woff2?9b9f2c447d27a622fcb78f6b7f38a095) format("woff2"), url(/fonts/materialdesignicons-webfont.woff?eec7f0f7c8944b878af8fb7fcc091ade) format("woff"), url(/fonts/materialdesignicons-webfont.ttf?3ef6639a4cce5b903e4031b1b0102675) format("truetype"), url(/fonts/materialdesignicons-webfont.svg?47d976b02055a209a8e4e4c6497b04ba) format("svg");
   font-weight: normal;
   font-style: normal;
 }
