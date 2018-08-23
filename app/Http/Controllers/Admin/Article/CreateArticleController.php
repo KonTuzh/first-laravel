@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Article;
 
 use App\Article;
 use App\Category;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreArticleRequest;
 use App\Http\Controllers\Controller;
 
 class CreateArticleController extends Controller
@@ -25,10 +25,10 @@ class CreateArticleController extends Controller
 	/**
 	 * Store a newly created category in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Illuminate\Http\StoreArticleRequest  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(StoreArticleRequest $request)
 	{
 		$article = Article::create($request->all());
 

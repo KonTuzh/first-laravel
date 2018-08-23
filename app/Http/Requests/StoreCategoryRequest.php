@@ -29,7 +29,7 @@ class StoreCategoryRequest extends FormRequest
 			'title'       => 'required|string|max:255',
 			'slug'        => ['required', 'max:255', Rule::unique('categories')->ignore($request->id), 'regex:/(^[a-z-0-9-]+$)/'],
 			'parent_id'   => 'integer|max:255',
-			'published'   => 'integer|max:255'
+			'published'   => 'boolean'
 		];
 	}
 	
@@ -39,14 +39,13 @@ class StoreCategoryRequest extends FormRequest
 			'title.required'    => 'Укажите название категории',
 			'title.string'      => 'Название должно быть строкой',
 			'title.max'         => 'Максимально допустимо :max символов',
-			'slug.required'     => 'Поле обязательно',
+			'slug.required'     => 'Обязательное поле',
 			'slug.max'          => 'Максимально допустимо :max символов',
 			'slug.unique'       => 'URL :input уже существует',
 			'slug.regex'        => 'Недопустимое значение. Только цифры, тире и строчные латинские буквы',
 			'parent_id.integer' => 'ID категории должно быть числом',
 			'parent_id.max'     => 'Максимально допустимо :max символов',
-			'published.integer' => 'Значение должно быть числом',
-			'published.max'     => 'Максимально допустимо :max символов',
+			'published.boolean' => 'Недопустимое значение',
 		];
 	}
 }

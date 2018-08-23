@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 
 class CreateCategoryController extends Controller
 {
-
 	public function __invoke()
 	{
 		return view('admin.categories.create', [
@@ -27,10 +26,6 @@ class CreateCategoryController extends Controller
 	 */
 	public function store(StoreCategoryRequest $request)
 	{
-
-		dd($request);
-		$validated = $request->validated();
-
 		Category::create($request->all());
 
 		return redirect()->route('admin.category.index');

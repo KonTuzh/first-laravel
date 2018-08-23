@@ -16809,6 +16809,10 @@ button.close {
   }
 }
 
+textarea {
+  resize: vertical;
+}
+
 .admin-article select[multiple],
 .admin-article select[size] {
   min-height: 250px;
@@ -16863,5 +16867,16 @@ button.close {
   margin: 0;
   width: auto;
   max-width: inherit;
+}
+
+.form-error {
+  border-color: #ff4f44;
+}
+
+.form-error-list {
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: #ff4f44;
+  padding: 5px 0 0 15px;
 }
 

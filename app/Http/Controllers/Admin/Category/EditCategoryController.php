@@ -26,7 +26,7 @@ class EditCategoryController extends Controller
 	 */
 	public function update(StoreCategoryRequest $request, Category $category)
 	{
-		$category->update($request->except('created_by'));
+		$category->update($request->except('id'));
 
 		return redirect()->route('admin.category.index');
 	}

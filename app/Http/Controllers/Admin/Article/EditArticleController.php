@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Article;
 
 use App\Article;
 use App\Category;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreArticleRequest;
 use App\Http\Controllers\Controller;
 
 class EditArticleController extends Controller
@@ -26,13 +26,13 @@ class EditArticleController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Illuminate\Http\StoreArticleRequest  $request
 	 * @param  \App\Article  $article
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, Article $article)
+	public function update(StoreArticleRequest $request, Article $article)
 	{
-		$article->update($request->except('created_by'));
+		$article->update($request->except('id'));
 
 		$article->categories()->detach();
 		if($request->input('categories')):

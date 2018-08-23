@@ -22,6 +22,7 @@
 	<div class="row">
 		<form action="{{route('admin.article.update', $article)}}" method="POST">
 			<input type="hidden" name="_method" value="put">
+			<input type="hidden" name="id" value="{{$article->id}}">
 			{{ csrf_field() }}
 
 			{{-- Form include --}}

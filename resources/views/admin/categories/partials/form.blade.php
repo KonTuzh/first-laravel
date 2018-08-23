@@ -1,19 +1,23 @@
 <div class="row">
 	<div class="form-group col-md-6">
 		<label for="title">Название</label>
-		<input type="text" class="form-control" name="title" placeholder="Заголовок категории" value="{{ $category->title or old('title')}}">
+		<input type="text" 
+					 @if ($errors->has('title')) class="form-control form-error" @else class="form-control" @endif
+					 name="title" placeholder="Заголовок категории" value="{{$category->title or old('title')}}">
 
 		@if ($errors->has('title'))
-				<div class="alert alert-danger">{{ $errors->first('title') }}</div>
+			<div class="form-error-list">{{ $errors->first('title') }}</div>
 		@endif
 	</div>
 
 	<div class="form-group col-md-6">
 		<label for="slug">URL (Уникальное значение)</label>
-		<input type="text" class="form-control" name="slug" placeholder="Ссылка на категорию" value="{{ $category->slug or old('slug')}}" required>
+		<input type="text" 
+					 @if ($errors->has('slug'))	class="form-control form-error" @else class="form-control" @endif
+					 name="slug" placeholder="Ссылка на категорию" value="{{$category->slug or old('slug')}}" required>
 		
 		@if ($errors->has('slug'))
-				<div class="alert alert-danger">{{ $errors->first('slug') }}</div>
+			<div class="form-error-list">{{ $errors->first('slug') }}</div>
 		@endif
 	</div>
 
