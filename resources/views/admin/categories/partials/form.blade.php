@@ -3,7 +3,7 @@
 		<label for="title">Название</label>
 		<input type="text" 
 					 @if ($errors->has('title')) class="form-control form-error" @else class="form-control" @endif
-					 name="title" placeholder="Заголовок категории" value="{{$category->title or old('title')}}">
+					 name="title" placeholder="Заголовок категории" value="@if(old('title')){{old('title')}}@else{{$category->title or ""}}@endif">
 
 		@if ($errors->has('title'))
 			<div class="form-error-list">{{ $errors->first('title') }}</div>
@@ -14,7 +14,7 @@
 		<label for="slug">URL (Уникальное значение)</label>
 		<input type="text" 
 					 @if ($errors->has('slug'))	class="form-control form-error" @else class="form-control" @endif
-					 name="slug" placeholder="Ссылка на категорию" value="{{$category->slug or old('slug')}}" required>
+					 name="slug" placeholder="Ссылка на категорию" value="@if(old('slug')){{old('slug')}}@else{{$category->slug or ""}}@endif" required>
 		
 		@if ($errors->has('slug'))
 			<div class="form-error-list">{{ $errors->first('slug') }}</div>

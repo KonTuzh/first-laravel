@@ -5,7 +5,7 @@
 			<label for="title">Название</label>
 			<input type="text" 
 						 @if ($errors->has('title')) class="form-control form-error" @else class="form-control" @endif
-						 name="title" placeholder="Заголовок статьи" value="{{$article->title or old('title')}}">
+						 name="title" placeholder="Заголовок статьи" value="@if(old('title')){{old('title')}}@else{{$article->title or ""}}@endif">
 
 			@if ($errors->has('title'))
 				<div class="form-error-list">{{ $errors->first('title') }}</div>
@@ -16,7 +16,7 @@
 			<label for="slug">URL (Уникальное значение)</label>
 			<input type="text" 
 						 @if ($errors->has('slug')) class="form-control form-error" @else class="form-control" @endif
-						 name="slug" placeholder="Ссылка на статью" value="{{$article->slug or old('slug')}}">
+						 name="slug" placeholder="Ссылка на статью" value="@if(old('slug')){{old('slug')}}@else{{$article->slug or ""}}@endif">
 
 			@if ($errors->has('slug'))
 				<div class="form-error-list">{{ $errors->first('slug') }}</div>
@@ -26,7 +26,7 @@
 		<div class="form-group">
 			<label for="description_short">Анонс статьи</label>
 			<textarea id="description_short" @if ($errors->has('description_short')) class="form-control form-error" @else class="form-control" @endif
-							  cols="30" rows="5" name="description_short" >{{$article->description_short or old('description_short')}}</textarea>
+							  cols="30" rows="5" name="description_short" >@if(old('description_short')){{old('description_short')}}@else{{$article->description_short or ""}}@endif</textarea>
 			
 			@if ($errors->has('description_short'))
 				<div class="form-error-list">{{ $errors->first('description_short') }}</div>
@@ -36,7 +36,7 @@
 		<div class="form-group">
 			<label for="description">Контент статьи</label>
 			<textarea id="editable" @if ($errors->has('description')) class="form-control form-error" @else class="form-control" @endif
-							  name="description" >{{$article->description or old('description')}}</textarea>
+							  name="description" >@if(old('description')){{old('description')}}@else{{$article->description or ""}}@endif</textarea>
 			
 			@if ($errors->has('description'))
 				<div class="form-error-list">{{ $errors->first('description') }}</div>
@@ -50,7 +50,7 @@
 		<div class="form-group">
 			<label for="meta_title">Title</label>
 			<input type="text" @if ($errors->has('meta_title')) class="form-control form-error" @else class="form-control" @endif
-						 name="meta_title" placeholder="SEO заголовок" value="{{$article->meta_title or old('meta_title')}}">
+						 name="meta_title" placeholder="SEO заголовок" value="@if(old('meta_title')){{old('meta_title')}}@else{{$article->meta_title or ""}}@endif">
 			
 			@if ($errors->has('meta_title'))
 				<div class="form-error-list">{{ $errors->first('meta_title') }}</div>
@@ -60,7 +60,7 @@
 		<div class="form-group">
 			<label for="meta_description">Description</label>
 			<textarea @if ($errors->has('meta_description')) class="form-control form-error" @else class="form-control" @endif
-								name="meta_description" cols="30" rows="10" placeholder="SEO описание">{{$article->meta_description or old('meta_description')}}</textarea>
+								name="meta_description" cols="30" rows="10" placeholder="SEO описание">@if(old('meta_description')){{old('meta_description')}}@else{{$article->meta_description or ""}}@endif</textarea>
 			
 			@if ($errors->has('meta_description'))
 				<div class="form-error-list">{{ $errors->first('meta_description') }}</div>
@@ -71,7 +71,7 @@
 		<div class="form-group">
 			<label for="meta_keyword bootstrap-tagslabel">Ключевые слова</label>
 			<input type="text" @if ($errors->has('meta_keyword')) class="form-control form-error" @else class="form-control" @endif
-						 name="meta_keyword" data-role="tagsinput" placeholder="Слова, через запятую" value="{{$article->meta_keyword or old('meta_keyword')}}">
+						 name="meta_keyword" data-role="tagsinput" placeholder="Слова, через запятую" value="@if(old('meta_keyword')){{old('meta_keyword')}}@else{{$article->meta_keyword or ""}}@endif">
 			
 			@if ($errors->has('meta_keyword'))
 				<div class="form-error-list">{{ $errors->first('meta_keyword') }}</div>

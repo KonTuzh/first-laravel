@@ -17,7 +17,7 @@
 		{{-- breadcrumbs --}}
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="{{route('home.index')}}"><i class="mdi mdi-home"></i></a></li>
+				<li><a href="{{route('home.index')}}">Главная</a></li>
 				<li class="active">Блог</li>
 			</ol>
 		</div>

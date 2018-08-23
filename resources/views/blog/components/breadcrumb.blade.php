@@ -1,5 +1,5 @@
 <ol class="breadcrumb">
-	<li><a href="{{route('home.index')}}"><i class="mdi mdi-home"></i></a></li>
+	<li><a href="{{route('home.index')}}">Главная</a></li>
 	<li><a href="{{route('blog.index')}}">Блог</a></li>
 	<li
 	@if ($parent_slug == '0')
