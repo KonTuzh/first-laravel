@@ -30,8 +30,8 @@
 						<ul class="dropdown-menu">
 							<li>
 								<a href="{{ route('logout') }}"
-									onclick="event.preventDefault();
-													document.getElementById('logout-form').submit();">
+									 onclick="event.preventDefault();
+									 document.getElementById('logout-form').submit();">
 									<i class="mdi mdi-logout-variant"></i> Выйти
 								</a>
 

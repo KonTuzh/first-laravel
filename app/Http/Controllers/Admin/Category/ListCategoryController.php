@@ -2,22 +2,24 @@
 
 namespace App\Http\Controllers\Admin\Category;
 
-use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\Category\ListCategoryService;
 
 class ListCategoryController extends Controller
 {
-	/**
-	 * Display a listing of the categories.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+	protected $service;
+
+	public function __construct(ListCategoryService $service)
+	{
+		$this->service = $service;
+	}
+
 	public function __invoke()
 	{
 		return view('admin.categories.index', [
 			'numeration' => 1,
-			'categories' => Category::paginate(10)
+			'categories' => $this->service->execute(10)
 		]);
 	}
 }

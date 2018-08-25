@@ -2,32 +2,24 @@
 
 namespace App\Http\Controllers\Admin\Category;
 
-use App\Category;
-use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Controllers\Controller;
-
+use App\Services\Category\CreateCategoryService;
 
 class CreateCategoryController extends Controller
 {
+	protected $service;
+
+	public function __construct(CreateCategoryService $service)
+	{
+		$this->service = $service;
+	}
+
 	public function __invoke()
 	{
 		return view('admin.categories.create', [
 			'category'   => [],
-			'categories' => Category::with('children')->where('parent_id', '0')->get(),
+			'categories' => $this->service->execute(),
 			'delimiter'  => ''
 		]);
-	}
-
-	/**
-	 * Store a newly created category in storage.
-	 *
-	 * @param  \Illuminate\Http\StoreCategoryRequest  $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(StoreCategoryRequest $request)
-	{
-		Category::create($request->all());
-
-		return redirect()->route('admin.category.index');
 	}
 }

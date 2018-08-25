@@ -3,20 +3,27 @@
 namespace App\Http\Controllers\Admin\Category;
 
 use App\Category;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\Category\DeleteCategoryService;
 
 class DeleteCategoryController extends Controller
 {
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Category  $category
-	 * @return \Illuminate\Http\Response
-	 */
+	protected $service;
+
+	public function __construct(DeleteCategoryService $service)
+	{
+		$this->service = $service;
+	}
+
 	public function __invoke(Category $category)
 	{
-		$category->delete();
+		try{
+			$this->service->execute($category);
+		} catch (\Exception $exception) {
+			return redirect()->route('admin.category.index')->withErrors([
+				'errorDelete' => 'Ошибка удаления категории'
+			]);
+		}
 
 		return redirect()->route('admin.category.index');
 	}

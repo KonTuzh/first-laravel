@@ -103,7 +103,7 @@
 	
 		<div class="form-group">
 			<label for="categories">Категории</label>
-			<select name="categories[]" class="form-control" multiple="">
+			<select name="categories[]" class="form-control">
 				@include('admin.articles.partials.categories', ['categories' => $categories])
 			</select>
 		</div>
