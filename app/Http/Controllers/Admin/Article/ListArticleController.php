@@ -5,19 +5,22 @@ namespace App\Http\Controllers\Admin\Article;
 use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\Article\ListArticleService;
 
 class ListArticleController extends Controller
 {
-	/**
-	 * Display a listing of the articles.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
+	protected $service;
+
+	public function __construct(ListArticleService $service)
+	{
+		$this->service = $service;
+	}
+
 	public function __invoke()
 	{
 		return view('admin.articles.index', [
 			'numeration' => 1,
-			'articles' => Article::orderByCreated()->paginate(10)
+			'articles' => $this->service->execute(10)
 		]);
 	}
 }

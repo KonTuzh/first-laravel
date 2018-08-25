@@ -37,9 +37,9 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware' => ['auth']]
 	Route::group(['prefix'=>'article', 'namespace'=>'Article'], function () {
 		Route::get('/', 'ListArticleController')->name('admin.article.index');
 		Route::get('/create', 'CreateArticleController')->name('admin.article.create');
-		Route::post('/', 'CreateArticleController@store')->name('admin.article.store');
+		Route::post('/', 'StoreArticleController')->name('admin.article.store');
 		Route::get('/{article}/edit', 'EditArticleController')->name('admin.article.edit');
-		Route::put('/{article}', 'EditArticleController@update')->name('admin.article.update');
+		Route::put('/{article}', 'UpdateArticleController')->name('admin.article.update');
 		Route::delete('/{article}', 'DeleteArticleController')->name('admin.article.destroy');
 	});
 	
