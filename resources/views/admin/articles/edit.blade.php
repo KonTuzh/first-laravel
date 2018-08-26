@@ -20,7 +20,7 @@
 
 	{{-- Form Create Category --}}
 	<div class="row">
-		<form action="{{route('admin.article.update', $article)}}" method="POST">
+		<form action="{{route('admin.article.update', $article)}}" method="POST" enctype="multipart/form-data">
 			<input type="hidden" name="_method" value="put">
 			<input type="hidden" name="id" value="{{$article->id}}">
 			{{ csrf_field() }}

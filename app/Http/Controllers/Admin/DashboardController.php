@@ -2,31 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Article;
-use App\Category;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\Admin\DashboardService;
 
 class DashboardController extends Controller
 {
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
+	protected $service;
+
+	public function __construct(DashboardService $service)
 	{
-		//
+		$this->service = $service;
 	}
 	
-	//Dashboard
-	public function dashboard()
+	public function __invoke()
 	{
 		return view('admin.dashboard', [
-			'count_categories'   => Category::count(),
-			'count_articles'   => Article::count(),
-			'articles'   => Article::lastArticles(5),
-			'categories' => Category::lastCategories(5)
+			'count_categories' => $this->service->countCategories(),
+			'count_articles'   => $this->service->countArticles(),
+			'articles'         => $this->service->lastArticles(5),
+			'categories'       => $this->service->lastCategories(5)
 		]);
 	}
 }

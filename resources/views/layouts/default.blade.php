@@ -13,7 +13,7 @@
 	<link rel="canonical" href="@yield('canonical')">
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body id="app" class="@yield('body_class')">
+<body class="@yield('body_class')">
 	@include('layouts.header')
 	@yield('content')
 	@include('layouts.footer')

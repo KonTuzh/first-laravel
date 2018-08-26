@@ -50,7 +50,7 @@
 							{{ $article->created_at }}
 						</td>
 						<td>
-							<form onsubmit="if(confirm('Удалить?')){ return true }else{ return false }" action="{{route('admin.article.destroy', $article)}}" method="post">
+							<form class="flex" onsubmit="if(confirm('Удалить?')){ return true }else{ return false }" action="{{route('admin.article.destroy', $article)}}" method="post">
 								<input type="hidden" name="_method" value="DELETE">
 								{{ csrf_field() }}
 	

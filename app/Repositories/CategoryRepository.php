@@ -13,9 +13,14 @@ class CategoryRepository implements CategoryRepositoryInterface
 		return Category::all();
 	}
 
+	public function count()
+	{
+		return Category::count();
+	}
+
 	public function paginate(int $count)
 	{
-		return Category::paginate($count);
+		return Category::orderBy('created_at', 'desc')->paginate($count);
 	}
 
 	public function lastCategories(int $count)
@@ -26,6 +31,16 @@ class CategoryRepository implements CategoryRepositoryInterface
 	public function childrenCategories()
 	{
 		return Category::with('children')->where('parent_id', '0')->get();
+	}
+
+	public function getCategory(string $slug)
+	{
+		return Category::where('slug', $slug)->first();
+	}
+
+	public function getArticlesCategory(Category $category, int $count)
+	{
+		return $category->articles()->where('published', 1)->orderBy('created_at', 'desc')->paginate($count);
 	}
 
 	public function store(StoreCategoryRequest $request)

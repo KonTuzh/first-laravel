@@ -3,7 +3,7 @@
 
 		<div class="form-group">
 			<label for="title">Название</label>
-			<input type="text" 
+			<input type="text" autocomplete="off"
 						 @if ($errors->has('title')) class="form-control form-error" @else class="form-control" @endif
 						 name="title" placeholder="Заголовок статьи" value="@if(old('title')){{old('title')}}@else{{$article->title or ""}}@endif">
 
@@ -14,7 +14,7 @@
 	
 		<div class="form-group">
 			<label for="slug">URL (Уникальное значение)</label>
-			<input type="text" 
+			<input type="text" autocomplete="off"
 						 @if ($errors->has('slug')) class="form-control form-error" @else class="form-control" @endif
 						 name="slug" placeholder="Ссылка на статью" value="@if(old('slug')){{old('slug')}}@else{{$article->slug or ""}}@endif">
 
@@ -26,7 +26,7 @@
 		<div class="form-group">
 			<label for="description_short">Анонс статьи</label>
 			<textarea id="description_short" @if ($errors->has('description_short')) class="form-control form-error" @else class="form-control" @endif
-							  cols="30" rows="5" name="description_short" >@if(old('description_short')){{old('description_short')}}@else{{$article->description_short or ""}}@endif</textarea>
+							  cols="30" rows="3" name="description_short" >@if(old('description_short')){{old('description_short')}}@else{{$article->description_short or ""}}@endif</textarea>
 			
 			@if ($errors->has('description_short'))
 				<div class="form-error-list">{{ $errors->first('description_short') }}</div>
@@ -49,7 +49,7 @@
 
 		<div class="form-group">
 			<label for="meta_title">Title</label>
-			<input type="text" @if ($errors->has('meta_title')) class="form-control form-error" @else class="form-control" @endif
+			<input type="text" autocomplete="off" @if ($errors->has('meta_title')) class="form-control form-error" @else class="form-control" @endif
 						 name="meta_title" placeholder="SEO заголовок" value="@if(old('meta_title')){{old('meta_title')}}@else{{$article->meta_title or ""}}@endif">
 			
 			@if ($errors->has('meta_title'))
@@ -60,7 +60,7 @@
 		<div class="form-group">
 			<label for="meta_description">Description</label>
 			<textarea @if ($errors->has('meta_description')) class="form-control form-error" @else class="form-control" @endif
-								name="meta_description" cols="30" rows="10" placeholder="SEO описание">@if(old('meta_description')){{old('meta_description')}}@else{{$article->meta_description or ""}}@endif</textarea>
+								name="meta_description" cols="30" rows="3" placeholder="SEO описание">@if(old('meta_description')){{old('meta_description')}}@else{{$article->meta_description or ""}}@endif</textarea>
 			
 			@if ($errors->has('meta_description'))
 				<div class="form-error-list">{{ $errors->first('meta_description') }}</div>
@@ -107,6 +107,16 @@
 				@include('admin.articles.partials.categories', ['categories' => $categories])
 			</select>
 		</div>
+
+		<div class="form-group">
+			<label>Обложка</label>
+			<input type="file" class="dropify" name="thumbnail" title="Загрузить изображение"
+						 data-default-file="@if(old('thumbnail')){{old('thumbnail')}}@else{{$article->thumbnail or ""}}@endif"/>
+		</div>
+		
+		@if ($errors->has('thumbnail'))
+				<div class="form-error-list">{{ $errors->first('thumbnail') }}</div>
+			@endif
 	
 	</div>
 

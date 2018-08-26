@@ -7,6 +7,8 @@ use App\Http\Requests\StoreCategoryRequest;
 
 interface CategoryRepositoryInterface
 {
+	public function count();
+
 	public function all();
 
 	public function paginate(int $count);
@@ -14,6 +16,10 @@ interface CategoryRepositoryInterface
 	public function lastCategories(int $count);
 
 	public function childrenCategories();
+
+	public function getCategory(string $slug);
+
+	public function getArticlesCategory(Category $category, int $count);
 
 	public function store(StoreCategoryRequest $request);
 

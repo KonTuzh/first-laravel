@@ -30,11 +30,13 @@ class StoreArticleRequest extends FormRequest
 			'slug'               => ['required', 'max:255', Rule::unique('articles')->ignore($request->id), 'regex:/(^[a-z-0-9-]+$)/'],
 			'description_short'  => 'required|string|max:255',
 			'description'        => 'required|string|min:200',
+			'thumbnail'          => 'nullable|mimes:jpeg,jpg|dimensions:min_width=1000,min_heaight=500',
 			'meta_title'         => 'nullable|string|max:255',
 			'meta_description'   => 'nullable|string|max:255',
 			'meta_keyword'       => 'nullable|string|max:255',
 			'published'          => 'boolean',
 			'categories'         => 'nullable|array',
+			'created_by'         => 'nullable|integer',
 			'modified_by'        => 'nullable|integer',
 		];
 	}
@@ -55,6 +57,8 @@ class StoreArticleRequest extends FormRequest
 			'description.required'       => 'Обязательное поле',
 			'description.string'         => 'Не верный формат',
 			'description.min'            => 'Миниимальное количество символов: :min',
+			'thumbnail.mimes'            => 'Не верный формат файла. Разрешены файлы JPEG, JPG',
+			'thumbnail.dimensions'       => 'Файл не должен быть меньше 1000px по ширине и 500px по высоте',
 			'meta_title.string'          => 'Не верный формат',
 			'meta_title.max'             => 'Максимально допустимо :max символов',
 			'meta_description.string'    => 'Не верный формат',

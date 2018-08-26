@@ -20,7 +20,7 @@
 
 	{{-- Form Create Article --}}
 	<div class="row">
-		<form action="{{route('admin.article.store')}}" method="POST">
+		<form action="{{route('admin.article.store')}}" method="POST" enctype="multipart/form-data">
 			{{ csrf_field() }}
 
 			{{-- Form include --}}

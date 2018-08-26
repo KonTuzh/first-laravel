@@ -79,7 +79,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -183,6 +183,7 @@ return [
 				 * Own Service Providers...
 				 */
 				App\Providers\BlogServiceProvider::class,
+				Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -230,8 +231,10 @@ return [
         'Storage' => Illuminate\Support\Facades\Storage::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
-        'View' => Illuminate\Support\Facades\View::class,
-
+				'View' => Illuminate\Support\Facades\View::class,
+				'Image' => Intervention\Image\Facades\Image::class,
+				'LocalizedCarbon' => Laravelrus\LocalizedCarbon\LocalizedCarbon::class,
+				'DiffFormatter'   => Laravelrus\LocalizedCarbon\DiffFactoryFacade::class,
     ],
 
 ];

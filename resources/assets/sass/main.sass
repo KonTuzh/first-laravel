@@ -40,7 +40,7 @@ body
 			border-color: red
 		&:required:valid
 			border-color: green
-	&.homepage, &.category, &.login, &.register
+	&.homepage, &.category, &.login, &.register, &.blog
 		background-color: $bg-body
 
 .img-responsive
@@ -258,7 +258,7 @@ section
 				content: '/ '
 				margin-left: 5px
 		&.active
-			color: #ddd
+			color: #999
 
 .button
 	padding: 15px 30px
@@ -500,6 +500,23 @@ section.newsletter
 				display: block
 				font-size: 2.1rem
 				font-weight: normal
+	&.blog
+		.newsletter-cta
+			color: $text-color
+		.subscribe-form
+			input[type="email"]
+				color: $text-color
+				border-color: $gray
+			.btn
+				color: #fff
+				background-color: $accent
+				&:hover
+					background-color: darken($accent,10%)
+		.row
+			min-height: $gutter
+			.newsletter-icon
+				img
+					max-width: 120px
 
 
 .subscribe-form
@@ -526,57 +543,58 @@ section.blog
 		flex-grow: 1
 	.section-heading, .blog-link
 		padding: $gutter/2
-	.post-link
-		display: flex
-		flex-direction: column
-		position: relative
+
+.post-link
+	display: flex
+	flex-direction: column
+	position: relative
+	&:after
+		content: ''
+		width: calc(100% - 30px)
+		height: 100%
+		position: absolute
+		top: 0
+		left: 15px
+		background-color: $bg-body
+		box-shadow: 0px 3px 5px 0px rgba(35,31,32,0.01)
+		transition: all 0.3s ease
+		z-index: 0
+	&:hover
+		text-decoration: none
+		color: #fff
 		&:after
-			content: ''
-			width: calc(100% - 30px)
-			height: 100%
-			position: absolute
-			top: 0
-			left: 15px
-			background-color: $bg-body
-			box-shadow: 0px 3px 5px 0px rgba(35,31,32,0.01)
-			transition: all 0.3s ease
-			z-index: 0
-		&:hover
-			text-decoration: none
-			color: #fff
-			&:after
-				background-color: $text-color
-				box-shadow: 0px 10px 10px 0px rgba(35,31,32,0.2)
-			.thumbnail
-				opacity: 0.6
+			background-color: $text-color
+			box-shadow: 0px 10px 10px 0px rgba(35,31,32,0.2)
 		.thumbnail
-			width: 100%
-			height: 200px
-			margin-bottom: 5px
-			background-position: center
-			background-repeat: no-repeat
-			background-size: cover
-			z-index: 1
-		.title
-			font-size: 2.1rem
-			line-height: 1.2
-			font-weight: 500
-			padding: $gutter/2
-			z-index: 1
-		.description_short
-			opacity: 0.8
-			line-height: 1.4
-			padding: 0 $gutter/2
-			margin-bottom: auto
-			z-index: 1
-		.info
-			justify-content: space-between
-			align-items: center
-			padding: $gutter/3 $gutter/2
 			opacity: 0.6
-			font-size: 1.6rem
-			font-weight: 500
-			z-index: 1
+	.thumbnail
+		width: 100%
+		height: 200px
+		margin-bottom: 5px
+		background-position: center
+		background-repeat: no-repeat
+		background-size: cover
+		z-index: 1
+	.title
+		font-size: 2.1rem
+		line-height: 1.2
+		font-weight: 500
+		padding: $gutter/2
+		z-index: 1
+	.description_short
+		opacity: 0.8
+		line-height: 1.4
+		padding: 0 $gutter/2
+		margin-bottom: auto
+		z-index: 1
+	.info
+		justify-content: space-between
+		align-items: center
+		padding: $gutter/3 $gutter/2
+		opacity: 0.6
+		font-size: 1.6rem
+		font-weight: 500
+		z-index: 1
 
 
 
@@ -636,5 +654,141 @@ section.advantages
 			padding: $gutter/2 0
 			margin-top: $gutter/2
 			opacity: 0.6
+
+.blog
+	.thumbnail
+		display: block
+		width: 100%
+		height: 200px
+		background-position: center
+		background-repeat: no-repeat
+		background-size: cover
+	.articles
+		.post-link
+			&:nth-child(1), &:nth-child(7)
+				flex: 0 0 66.66666667%
+				max-width: 66.66666667%
+			&:after
+				background-color: #fff
+			&:hover
+				&:after
+					background-color: $text-color
+	.content
+		padding: $gutter/2
+
+.pagination
+	display: flex
+	padding-left: 0
+	margin: 0 auto $gutter auto
+	list-style-type: none
+	li
+		width: 35px
+		height: 35px
+		line-height: 35px
+		margin-right: $gutter/3
+		text-align: center
+		a
+			display: block
+			width: 100%
+			height: 100%
+			background-color: rgba(255,255,255,0.6)
+			transition: all 0.3s ease
+			&:hover
+				text-decoration: none
+				background-color: rgba(255,255,255,1)
+		&.disabled
+			opacity: 0.4
+		&.active
+			color: #fff
+			background-color: $text-color
+		&:first-child, &:last-child
+			font-size: 2rem
+			line-height: 30px
+			a
+				background-color: transparent
+					
+.article
+	background-color: #fff
+	&-thumbnail
+		margin: 0 -15px
+		max-width: calc(100% + 30px)
+	&-meta
+		display: flex
+		.published
+			margin-right: auto
+	.tag-list
+		display: flex
+		flex-wrap: wrap
+		padding-left: 0
+		margin: $gutter $gutter/2
+		list-style-type: none
+		border-bottom: 1px solid #ddd
+		li
+			margin-bottom: $gutter/2
+			&.cat
+				margin-right: $gutter
+
+.comments-div
+	padding: 0 $gutter/2
+	&-header
+		font-size: 2.4rem
+		font-weight: 500
+		&-count
+			font-size: 1.4rem
+			font-weight: normal
+			margin-left: $gutter/2
+			color: $gray
+	&-form
+		margin: $gutter/2 0
+
+
+.aside
+	&-item
+		background-color: #fff
+		margin-bottom: $gutter
+	&-heading
+		font-size: 2.4rem
+		font-weight: 500
+		line-height: 1.2
+		padding-bottom: 10px
+		border-bottom: 1px solid $bg-body
+	&-categories
+		list-style-type: none
+		padding-left: 0
+		a
+			display: flex
+			justify-content: space-between
+
+
+.p-10
+	padding: 10px
+.p-15
+	padding: 15px
+.p-20
+	padding: 20px
+.p-30
+	padding: 30px
+
+.mt-10
+	margin-top: 10px
+.mt-15
+	margin-top: 15px
+.mt-20
+	margin-top: 20px
+.mt-30
+	margin-top: 30px
+
+.mb-10
+	margin-bottom: 10px
+.mb-15
+	margin-bottom: 15px
+.mb-20
+	margin-bottom: 20px
+.mb-30
+	margin-bottom: 30px
+
+
+
+
 
 @import "media" // Always at the end

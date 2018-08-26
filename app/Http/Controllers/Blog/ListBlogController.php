@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Category;
-use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\Article\ListArticleService;
 
 class ListBlogController extends Controller
 {
+	protected $service;
+
+	public function __construct(ListArticleService $service)
+	{
+		$this->service = $service;
+	}
+
 	public function __invoke()
 	{
 		return view('blog.index', [
-			'articles' => Article::orderByCreated()->paginate(10)
+			'articles' => $this->service->execute(5)
 		]);
 	}
 

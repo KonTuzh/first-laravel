@@ -37,7 +37,7 @@
 			@forelse ($categories as $category)
 				<a href="{{route('admin.category.edit', $category)}}" class="list-group-item">
 					<h4 class="list-group-item-heading">{{ $category->title }}</h4>
-					<p class="list-group-item-text"><i class="mdi mdi-file-outline"></i> {{ $category->articles()->count() }}</p>
+					<p class="list-group-item-text"><i class="mdi mdi-file-outline"></i> Статей: {{ $category->articles()->count() }}</p>
 				</a>
 			@empty
 				<p class="text-center" colspan="3">Пусто</p>

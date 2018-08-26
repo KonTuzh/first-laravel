@@ -15,6 +15,8 @@ Route::get('/', function () {
 	return view('pages.home');
 })->name('home.index');
 
+// Route::get('/phpinfo', function () { phpinfo(); });
+
 Route::group(['prefix'=>'blog', 'namespace'=>'Blog'], function () {
 	Route::get('/', 'ListBlogController')->name('blog.index');
 	Route::get('/{slug_category}/{slug_article?}', 'ShowBlogController')->name('blog.show');
@@ -23,7 +25,7 @@ Route::group(['prefix'=>'blog', 'namespace'=>'Blog'], function () {
 Auth::routes();
 
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware' => ['auth']], function () {
-	Route::get('/', 'DashboardController@dashboard')->name('admin.index');
+	Route::get('/', 'DashboardController')->name('admin.index');
 
 	Route::group(['prefix'=>'category', 'namespace'=>'Category'], function () {
 		Route::get('/', 'ListCategoryController')->name('admin.category.index');

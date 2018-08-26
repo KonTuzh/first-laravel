@@ -16880,3 +16880,13 @@ textarea {
   padding: 5px 0 0 15px;
 }
 
+form.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+form.flex a.btn-default {
+  margin-right: 5px;
+}
+
