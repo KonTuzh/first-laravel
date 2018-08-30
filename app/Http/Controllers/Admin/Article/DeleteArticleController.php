@@ -26,6 +26,6 @@ class DeleteArticleController extends Controller
 			]);
 		}
 
-		return redirect()->route('admin.article.index');
+		return back()->with('message', 'Статья удалена');
 	}
 }

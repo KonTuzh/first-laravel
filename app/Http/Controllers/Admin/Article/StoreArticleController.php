@@ -18,8 +18,14 @@ class StoreArticleController extends Controller
 
 	public function __invoke(StoreArticleRequest $request)
 	{
-		$this->service->execute($request);
+		try{
+			$this->service->execute($request);
+		} catch (\Exception $exception) {
+			return redirect()->route('admin.article.index')->withErrors([
+				'errorDelete' => $exception->getMessage()
+			]);
+		}
 
-		return redirect()->route('admin.article.index');
+		return redirect()->route('admin.article.index')->with('message', 'Статья добавлена');
 	}
 }

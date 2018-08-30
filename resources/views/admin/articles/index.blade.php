@@ -21,9 +21,15 @@
 	<hr>
 
 	<div class="row">
+
 		@if ($errors->has('errorDelete'))
-			<div class="alert alert-danger">{{ $errors->first('errorDelete') }}</div>
+			<div class="alert alert-danger" role="alert">{{ $errors->first('errorDelete') }}</div>
 		@endif
+
+		@if (Session::has('message'))
+		<div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
+		@endif
+
 		<table class="table table-striped">
 			<thead>
 				<th>#</th>

@@ -13,6 +13,11 @@ class Article extends Model
 	{
 		return $this->morphToMany('App\Category', 'categoryable');
 	}
+
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
 }
 
 

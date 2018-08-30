@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Article;
-use App\Http\Requests\StoreArticleRequest;
 
 interface ArticleRepositoryInterface
 {
@@ -21,9 +20,13 @@ interface ArticleRepositoryInterface
 
 	public function childrenArticles();
 
-	public function store(StoreArticleRequest $request);
+	public function store(Article $article);
 
-	public function update(StoreArticleRequest $request, Article $article);
+	public function attachCategories(Article $article, array $categories);
+
+	public function detachCategories(Article $article);
+
+	public function update(Article $article);
 
 	public function updateViewed(Article $article);
 

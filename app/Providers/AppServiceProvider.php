@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
 		$models = array(
 			'Category',
 			'Article',
+			'User',
 		);
 			
 		foreach ($models as $model) {

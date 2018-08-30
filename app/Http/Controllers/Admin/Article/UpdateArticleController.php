@@ -18,8 +18,14 @@ class UpdateArticleController extends Controller
 
 	public function __invoke(StoreArticleRequest $request, Article $article)
 	{
-		$this->service->execute($request, $article);
+		try{
+			$this->service->execute($request, $article);
+		} catch (\Exception $exception) {
+			return redirect()->route('admin.article.index')->withErrors([
+				'errorDelete' => $exception->getMessage()
+			]);
+		}
 
-		return redirect()->route('admin.article.index');
+		return redirect()->route('admin.article.index')->with('message', 'Статья обновлена');
 	}
 }

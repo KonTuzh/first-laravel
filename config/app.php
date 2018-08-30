@@ -232,7 +232,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
 				'View' => Illuminate\Support\Facades\View::class,
-				'Image' => Intervention\Image\Facades\Image::class,
+				'Img' => Intervention\Image\Facades\Image::class,
 				'LocalizedCarbon' => Laravelrus\LocalizedCarbon\LocalizedCarbon::class,
 				'DiffFormatter'   => Laravelrus\LocalizedCarbon\DiffFactoryFacade::class,
     ],

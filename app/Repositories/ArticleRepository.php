@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Article;
 use App\Repositories\ArticleRepositoryInterface;
-use App\Http\Requests\StoreArticleRequest;
 
 class ArticleRepository implements ArticleRepositoryInterface
 {
@@ -43,59 +42,27 @@ class ArticleRepository implements ArticleRepositoryInterface
 		return Article::with('children')->where('parent_id', '0')->get();
 	}
 
-	public function store(StoreArticleRequest $request)
+	public function store(Article $article)
 	{
-		// $article = Article::create($request->all());
-
-		$article = new Article();
-
-		$article->title             = $request->get('title');
-		$article->slug              = $request->get('slug');
-		$article->description_short = $request->get('description_short');
-		$article->description       = $request->get('description');
-		$article->meta_title        = $request->get('meta_title');
-		$article->meta_description  = $request->get('meta_description');
-		$article->meta_keyword      = $request->get('meta_keyword');
-		$article->published         = $request->get('published');
-		$article->created_by        = $request->get('created_by');
-
-		if ($request->has('thumbnail')) {
-			$article->thumbnail = $this->thumbnailUpload($request);
-		}
-
-		$article->save();
-
-		if($request->input('categories')):
-			$article->categories()->attach($request->input('categories'));
-		endif;
-
-		return $article;
+		// throw new \Exception("не буду делать запись в базу данных");
+		return $article->save();
 	}
 
-	public function update(StoreArticleRequest $request, Article $article)
+	public function attachCategories(Article $article, array $categories)
 	{
-		// $article->update($request->except('id'));
-		$article->title             = $request->get('title');
-		$article->slug              = $request->get('slug');
-		$article->description_short = $request->get('description_short');
-		$article->description       = $request->get('description');
-		$article->meta_title        = $request->get('meta_title');
-		$article->meta_description  = $request->get('meta_description');
-		$article->meta_keyword      = $request->get('meta_keyword');
-		$article->published         = $request->get('published');
-		$article->modified_by       = $request->get('modified_by');
+		return $article->categories()->attach($categories);
+	}
 
-		if ($request->has('thumbnail')) {
-			$article->thumbnail = $this->thumbnailUpload($request);
-		}
+	public function detachCategories(Article $article)
+	{
+		return $article->categories()->detach();
+	}
 
+	public function update(Article $article)
+	{
+		// throw new \Exception("не буду обновлять запись в базе данных");
 		$article->save();
-
 		$article->categories()->detach();
-
-		if($request->input('categories')):
-			$article->categories()->attach($request->input('categories'));
-		endif;
 
 		return $article;
 	}
@@ -110,19 +77,5 @@ class ArticleRepository implements ArticleRepositoryInterface
 		$article->categories()->detach();
 		
 		return $article->delete();
-	}
-
-	protected function thumbnailUpload(StoreArticleRequest $request)
-	{
-		$file = \Image::make($request->file('thumbnail'));
-		$path = storage_path('app/public/images/blog/'.$request->get('slug').'.jpg');
-
-		$file->resize(1000, null, function ($constraint) {
-			$constraint->aspectRatio();
-		});
-		
-		$file->save($path);
-
-		return $image = \Storage::disk('public')->url('images/blog/'.$request->get('slug').'.jpg');
 	}
 }
