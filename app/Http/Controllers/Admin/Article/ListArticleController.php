@@ -9,6 +9,7 @@ use App\Services\Article\ListArticleService;
 
 class ListArticleController extends Controller
 {
+	const PERMISSION = 'article.list';
 	protected $service;
 
 	public function __construct(ListArticleService $service)

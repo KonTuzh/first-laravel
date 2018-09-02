@@ -22,9 +22,15 @@ class StoreUserService
 		$this->user->password  = bcrypt($request->get('password'));
 
 		try{
-			return $result = $this->repository->store($this->user);
+			$result = $this->repository->store($this->user);
 		} catch (\Exception $exception) {
 			throw new \Exception("Ошибка записи в базу данных");
 		}
+
+		if($request->input('roles')){
+			$this->repository->attachRole($user, $request->input('roles'));
+		}
+
+		return $result;
 	}
 }

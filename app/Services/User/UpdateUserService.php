@@ -21,9 +21,15 @@ class UpdateUserService
 		$request->get('password') == null ?: $user->password = bcrypt($request->get('password'));
 
 		try{
-			return $this->repository->update($user);
+			$result = $this->repository->update($user);
 		} catch (\Exception $exception) {
 			throw new \Exception("Ошибка обновления записи в базе данных");
 		}
+
+		if($request->input('roles')){
+			$this->repository->attachRole($user, $request->input('roles'));
+		}
+
+		return $result;
 	}
 }

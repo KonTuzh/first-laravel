@@ -9,6 +9,7 @@ use App\Http\Requests\StoreArticleRequest;
 
 class UpdateArticleController extends Controller
 {
+	const PERMISSION = 'article.update';
   protected $service;
 
 	public function __construct(UpdateArticleService $service)

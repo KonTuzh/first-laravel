@@ -13,6 +13,8 @@ interface UserRepositoryInterface
 
 	public function store(User $user);
 
+	public function attachRole(User $user, array $roles);
+
 	public function update(User $user);
 
 	public function delete(User $user);

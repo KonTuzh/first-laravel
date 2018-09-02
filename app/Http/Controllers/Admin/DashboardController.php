@@ -7,6 +7,7 @@ use App\Services\Admin\DashboardService;
 
 class DashboardController extends Controller
 {
+	const PERMISSION = 'dashboard.index';
 	protected $service;
 
 	public function __construct(DashboardService $service)
@@ -19,6 +20,7 @@ class DashboardController extends Controller
 		return view('admin.dashboard', [
 			'count_categories' => $this->service->countCategories(),
 			'count_articles'   => $this->service->countArticles(),
+			'count_users'      => $this->service->countUsers(),
 			'articles'         => $this->service->lastArticles(5),
 			'categories'       => $this->service->lastCategories(5)
 		]);

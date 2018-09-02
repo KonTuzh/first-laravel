@@ -28,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
 			'Category',
 			'Article',
 			'User',
+			'Role',
+			'Permission',
 		);
 			
 		foreach ($models as $model) {

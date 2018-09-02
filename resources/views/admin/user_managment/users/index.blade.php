@@ -33,6 +33,7 @@
 		<table class="table table-striped">
 			<thead>
 				<th>#</th>
+				<th>ID</th>
 				<th>Имя</th>
 				<th>Email</th>
 				<th>Роль</th>
@@ -44,9 +45,10 @@
 					
 					<tr>
 						<td>{{ $numeration++ }}</td>
+						<td>{{ $user->id }}</td>
 						<td>{{ $user->name }}</td>
 						<td>{{ $user->email }}</td>
-						<td></td>
+						<td>{{ $user->roles()->pluck('key')->implode(', ') }}</td>
 						<td>
 							{{ $user->created_at }}
 						</td>

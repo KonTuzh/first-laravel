@@ -8,6 +8,7 @@ use App\Services\Category\ListCategoryService;
 
 class ListCategoryController extends Controller
 {
+	const PERMISSION = 'category.list';
 	protected $service;
 
 	public function __construct(ListCategoryService $service)

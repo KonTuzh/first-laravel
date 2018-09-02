@@ -21,9 +21,8 @@ class UpdateUserController extends Controller
 		try{
 			$this->service->execute($request, $user);
 		} catch (\Exception $exception) {
-			return redirect()->route('admin.user_managment.user.index')->withErrors([
-				'errorDelete' => $exception->getMessage()
-			]);
+			return redirect()->route('admin.user_managment.user.index')
+											 ->withErrors(['errorDelete' => $exception->getMessage()]);
 		}
 
 		return redirect()->route('admin.user_managment.user.index')->with('message', 'Запись обновлена');

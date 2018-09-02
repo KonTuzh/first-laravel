@@ -83,24 +83,56 @@
 	{{-- right column --}}
 	<div class="col-md-3">
 	
-		<div class="form-group">
-			<label for="published">Статус</label>
-			<select @if ($errors->has('published')) class="form-control form-error" @else class="form-control" @endif
-							name="published">
-				@if (isset($article->id))
-					<option value="0" @if ($article->published == 0) selected=""	@endif>Черновик</option>
-					<option value="1" @if ($article->published == 1) selected=""	@endif>Опубликовано</option>
-				@else
-					<option value="0">Черновик</option>
-					<option value="1">Опубликовано</option>
-				@endif
-			</select>
+		@if (Auth::user()->hasRole('publisher') || Auth::user()->hasRole('admin'))
+			<div class="form-group">
+				<label for="published">Публикация</label>
+				<select @if ($errors->has('published')) class="form-control form-error" @else class="form-control" @endif
+								name="published">
+					@if (isset($article->id))
+						@if ($article->status == 'checked')
+						<option value="0" @if ($article->published == 0) selected=""	@endif>Черновик</option>
+						<option value="1" @if ($article->published == 1) selected=""	@endif>Опубликовано</option>
+						@else
+							<option value="0" selected="">Черновик</option>
+						@endif
+					@else
+						<option value="0">Черновик</option>
+						<option value="1">Опубликовано</option>
+					@endif
+				</select>
 
-			@if ($errors->has('published'))
-				<div class="form-error-list">{{ $errors->first('published') }}</div>
+				@if ($errors->has('published'))
+					<div class="form-error-list">{{ $errors->first('published') }}</div>
+				@endif
+			</div>
+		@endif
+
+		@if (Auth::user()->hasRole('editor') || Auth::user()->hasRole('admin'))
+			@if (isset($article->id))
+				<div class="form-group">
+					<label for="status">Статус статьи</label>
+					<select @if ($errors->has('status')) class="form-control form-error" @else class="form-control" @endif name="status">
+						<option value="added" @if ($article->status == 'added') selected=""	@endif>Добавлена</option>
+						<option value="checked" @if ($article->status == 'checked') selected=""	@endif>Принята</option>
+						<option value="rejected" @if ($article->status == 'rejected') selected=""	@endif>Отклонена</option>
+					</select>
+					@if ($errors->has('status'))
+					<div class="form-error-list">{{ $errors->first('status') }}</div>
+					@endif
+				</div>
 			@endif
-		</div>
-	
+		@else
+			@if (isset($article->id))
+				@if (Auth::user()->hasRole('writer'))
+					<input type="hidden" name="status" value="added">
+				@else
+					<input type="hidden" name="status" value="{{$article->status}}">
+				@endif
+				
+			@endif
+		@endif
+		
+
 		<div class="form-group">
 			<label for="categories">Категории</label>
 			<select name="categories[]" class="form-control">

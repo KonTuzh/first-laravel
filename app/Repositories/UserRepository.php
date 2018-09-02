@@ -24,9 +24,17 @@ class UserRepository implements UserRepositoryInterface
 		return $user->save();
 	}
 
+	public function attachRole(User $user, array $roles)
+	{
+		return $user->roles()->attach($roles);
+	}
+
 	public function update(User $user)
 	{
-		return $user->save();
+		$user->save();
+		$user->roles()->detach();
+
+		return $user;
 	}
 
 	public function delete(User $user)

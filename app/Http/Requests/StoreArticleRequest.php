@@ -29,7 +29,7 @@ class StoreArticleRequest extends FormRequest
 			'title'              => 'required|string|max:255',
 			'slug'               => ['required', 'max:255', Rule::unique('articles')->ignore($request->id), 'regex:/(^[a-z-0-9-]+$)/'],
 			'description_short'  => 'required|string|max:255',
-			'description'        => 'required|string|min:200',
+			'description'        => 'required|string|min:3',
 			'thumbnail'          => 'nullable|mimes:jpeg,jpg|dimensions:min_width=1000,min_heaight=500',
 			'meta_title'         => 'nullable|string|max:255',
 			'meta_description'   => 'nullable|string|max:255',
@@ -38,6 +38,7 @@ class StoreArticleRequest extends FormRequest
 			'categories'         => 'nullable|array',
 			'created_by'         => 'nullable|integer',
 			'modified_by'        => 'nullable|integer',
+			'status'             => ['nullable', Rule::in(['added', 'checked', 'rejected'])],
 		];
 	}
 

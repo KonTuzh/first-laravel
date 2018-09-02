@@ -11,22 +11,22 @@
 	<div class="row">
 		<div class="col-sm-3">
 			<div class="jumbotron">
-				<p><span class="label label-primary">Категорий: {{ $count_categories }}</span></p>
+				<p><a class="label label-primary" href="{{route('admin.category.index')}}">Категорий: {{ $count_categories }}</a></p>
 			</div>
 		</div>
 		<div class="col-sm-3">
 			<div class="jumbotron">
-				<p><span class="label label-primary">Статей: {{ $count_articles }}</span></p>
+				<p><a class="label label-primary" href="{{route('admin.article.index')}}">Статей: {{ $count_articles }}</a></p>
 			</div>
 		</div>
 		<div class="col-sm-3">
 			<div class="jumbotron">
-				<p><span class="label label-primary">Регистраций: 0</span></p>
+				<p><span class="label label-primary">Пользователей: {{ $count_users }}</span></p>
 			</div>
 		</div>
 		<div class="col-sm-3">
 			<div class="jumbotron">
-				<p><span class="label label-primary">Посетителей: 0</span></p>
+				<p><span class="label label-primary">Посещений: 0</span></p>
 			</div>
 		</div>
 	</div>

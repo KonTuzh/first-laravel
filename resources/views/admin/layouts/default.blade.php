@@ -40,18 +40,23 @@
 					<ul class="nav navbar-nav">
 						<li><a href="{{route('admin.index')}}">Dashboard</a></li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Блог</a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Управление блогом</a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{route('admin.category.index')}}">Категории</a></li>
 								<li><a href="{{route('admin.article.index')}}">Статьи</a></li>
 							</ul>
 						</li>
+
+						@can('isAdmin')
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Управление пользователями</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{route('admin.user_managment.user.index')}}">Пользователи</a></li>
-							</ul>
-						</li>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Управление пользователями</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="{{route('admin.user_managment.user.index')}}">Пользователи</a></li>
+									<li><a href="{{route('admin.user_managment.role.index')}}">Роли</a></li>
+								</ul>
+							</li>
+						@endcan
+						
 					</ul>
 
 					<!-- Right Side Of Navbar -->

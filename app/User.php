@@ -53,8 +53,8 @@ class User extends Authenticatable
 		return false;
 	}
 
-	public function isSuperAdmin()
+	public function isAdmin()
 	{
-		return $this->roles->contains('key', 'absolute');
+		return $this->roles->contains('key', 'admin');
 	}
 }

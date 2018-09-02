@@ -28,7 +28,8 @@ class EditUserRequest extends FormRequest
 		return [
 			'name'     => 'required|string|max:255',
 			'email'    => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request->id)],
-			'password' => 'nullable|string|min:6|confirmed'
+			'password' => 'nullable|string|min:6|confirmed',
+			'roles'    => 'nullable|array'
 		];
 	}
 	
@@ -46,6 +47,7 @@ class EditUserRequest extends FormRequest
 			'password.string'    => 'Пароль должeн быть строкой',
 			'password.confirmed' => 'Подтверждение не верное',
 			'password.min'       => 'Пароль не должет быть короче :min символов',
+			'roles.array'        => 'Недопустимый формат',
 		];
 	}
 }

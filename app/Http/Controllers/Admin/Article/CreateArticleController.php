@@ -7,6 +7,7 @@ use App\Services\Article\CreateArticleService;
 
 class CreateArticleController extends Controller
 {
+	const PERMISSION = 'article.create';
 	protected $service;
 
 	public function __construct(CreateArticleService $service)

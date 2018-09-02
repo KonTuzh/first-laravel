@@ -6,13 +6,13 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateRolesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
+		/**
+		 * Run the migrations.
+		 *
+		 * @return void
+		 */
+		public function up()
+		{
 			Schema::create('roles', function (Blueprint $table) {
 				$table->increments('id');
 				$table->string('key');
@@ -42,13 +42,13 @@ class CreateRolesTable extends Migration
 			});
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('roles');
-    }
+		/**
+		 * Reverse the migrations.
+		 *
+		 * @return void
+		 */
+		public function down()
+		{
+				Schema::dropIfExists('roles');
+		}
 }

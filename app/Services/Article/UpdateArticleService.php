@@ -23,8 +23,10 @@ class UpdateArticleService
 		$article->meta_title        = $request->get('meta_title');
 		$article->meta_description  = $request->get('meta_description');
 		$article->meta_keyword      = $request->get('meta_keyword');
-		$article->published         = $request->get('published');
 		$article->modified_by       = $request->get('modified_by');
+		$article->status            = $request->get('status');
+
+		$request->get('status') == 'checked' ? $article->published = $request->get('published') : $article->published = 0;
 
 		if ($request->has('thumbnail')) {
 			try{

@@ -43,6 +43,23 @@
 		@endif
 	</div>
 
+	<div class="form-group col-md-12">
+		<label for="roles">Назначить роль пользователю</label>
+		<select name="roles[]" class="form-control select-multiple-200" multiple>
+			@foreach ($roles as $role)
+				<option value="{{$role->id or ""}}"
+					@isset($user->id)
+						@foreach ($user->roles as $user_role)
+								@if ($role->id == $user_role->id)
+									selected="selected"
+								@endif
+						@endforeach
+					@endisset
+				>{{$role->key or ""}}</option>
+			@endforeach
+		</select>
+	</div>
+
 </div>
 
 	<hr>

@@ -13,12 +13,12 @@
 		<hr>
 	</div>
 
-	{{-- Create Article Btn --}}
-	<div class="row">
-		<a href="{{route('admin.article.create')}}" class="btn btn-primary pull-right"><i class="mdi mdi-library-plus"></i> Новая статья</a>
-	</div>
-
-	<hr>
+	@can('create', \App\Article::class)
+		<div class="row">
+			<a href="{{route('admin.article.create')}}" class="btn btn-primary pull-right"><i class="mdi mdi-library-plus"></i> Новая статья</a>
+		</div>
+		<hr>
+	@endcan
 
 	<div class="row">
 
@@ -33,39 +33,44 @@
 		<table class="table table-striped">
 			<thead>
 				<th>#</th>
-				<th>Заголовок</th>
-				<th>URL</th>
+				<th>Заголовок / URL</th>
+				<th>Статус</th>
 				<th>Категории</th>
 				<th>Публикация</th>
+				<th>Автор</th>
 				<th>Дата</th>
-				<th>Действие</th>
+				@can('delete', \App\Article::class)<th>Действие</th>@endcan
 			</thead>
 			<tbody>
 				@forelse ($articles as $article)
-					
-					<tr>
-						<td>{{ $numeration++ }}</td>
-						<td>{{ $article->title }}</td>
-						<td>{{ $article->slug }}</td>
-						<td>{{ $article->categories()->pluck('title')->implode(', ') }}</td>
-						<td>
-							@if ($article->published == 0) Черновик	@endif
-							@if ($article->published == 1) Опубликовано	@endif
-						</td>
-						<td>
-							{{ $article->created_at }}
-						</td>
-						<td>
-							<form class="flex" onsubmit="if(confirm('Удалить?')){ return true }else{ return false }" action="{{route('admin.article.destroy', $article)}}" method="post">
-								<input type="hidden" name="_method" value="DELETE">
-								{{ csrf_field() }}
-	
-								<a class="btn btn-default" href="{{route('admin.article.edit', $article)}}"><i class="mdi mdi-table-edit"></i></a>
-	
-								<button class="btn"><i class="mdi mdi-delete"></i></button>
-							</form>
-						</td>
-					</tr>
+					@if (!Auth::user()->hasRole('writer') || Auth::user()->id == $article->created_by)
+						<tr>
+							<td>{{ $numeration++ }}</td>
+							<td><a href="{{route('admin.article.edit', $article)}}">{{ $article->title }}</a> <p class="block">/{{ $article->slug }}</p></td>
+							@if ($article->status == 'added') <td class="text-secondary">Добавлена</td> @endif
+							@if ($article->status == 'checked') <td class="text-success">Принята</td> @endif
+							@if ($article->status == 'rejected') <td class="text-danger">Отклонена</td> @endif
+							<td>{{ $article->categories()->pluck('title')->implode(', ') }}</td>
+							<td>
+								@if ($article->published == 0) Черновик	@endif
+								@if ($article->published == 1) Опубликовано	@endif
+							</td>
+							<td>{{ $article->user()->pluck('name')->implode(', ') }}</td>
+							<td>{{ $article->created_at }}</td>
+							@can('delete', \App\Article::class)
+								<td>
+									<form class="flex" onsubmit="if(confirm('Удалить?')){ return true }else{ return false }" action="{{route('admin.article.destroy', $article)}}" method="post">
+										<input type="hidden" name="_method" value="DELETE">
+										{{ csrf_field() }}
+
+										<a class="btn btn-default" href="{{route('admin.article.edit', $article)}}"><i class="mdi mdi-table-edit"></i></a>
+
+										<button class="btn btn-danger"><i class="mdi mdi-delete"></i></button>
+									</form>
+								</td>
+							@endcan
+						</tr>
+					@endif
 				@empty
 						<tr>
 							<td class="text-center" colspan="3">
